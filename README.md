@@ -9,7 +9,7 @@ classDiagram
     Person --> City :lives in
     City --> State :lies in
     Employee <--> Task :has
-    Order --> Invoice :generates
+    Order <--> Invoice :relates to
     Order *--> OrderItem :has many
     OrderItem o--> Product :includes
     Consumer --> Order :places
