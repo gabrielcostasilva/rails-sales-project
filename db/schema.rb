@@ -10,13 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_18_232627) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_19_213603) do
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.integer "state_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["state_id"], name: "index_cities_on_state_id"
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "amount"
+    t.decimal "totalItem"
+    t.integer "product_id", null: false
+    t.integer "order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.decimal "total"
+    t.date "order_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -33,4 +51,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_18_232627) do
   end
 
   add_foreign_key "cities", "states"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
 end
