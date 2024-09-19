@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_19_213603) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_19_214935) do
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.integer "state_id", null: false
@@ -46,6 +46,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_19_213603) do
 
   create_table "states", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.integer "current"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
